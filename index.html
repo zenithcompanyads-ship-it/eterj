@@ -67,128 +67,6 @@ body {
   overflow-x: hidden;
 }
 
-
-/* ==== URGÊNCIA ==== */
-.urgencia-vagas {
-  background: linear-gradient(135deg, #FF6B1A, #E05500);
-  color: white;
-  text-align: center;
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  line-height: 1.4;
-}
-.urgencia-vagas .vagas-num {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 14px;
-  color: #FFC700;
-}
-.urgencia-prazo {
-  background: var(--preto);
-  color: var(--amarelo);
-  text-align: center;
-  padding: 5px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-.countdown {
-  display: inline-flex;
-  gap: 4px;
-  align-items: center;
-  margin-left: 6px;
-  font-family: 'JetBrains Mono', monospace;
-}
-.countdown-item {
-  background: rgba(255,199,0,0.2);
-  border: 1px solid var(--amarelo);
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-/* ==== POPUP FEEDBACK ==== */
-.feedback-popup {
-  position: fixed;
-  bottom: 100px;
-  left: 24px;
-  background: white;
-  border-radius: 12px;
-  padding: 14px 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-  z-index: 9999;
-  max-width: 300px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  transform: translateX(-120%);
-  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  border-left: 4px solid #FF6B1A;
-}
-.feedback-popup.show {
-  transform: translateX(0);
-}
-.feedback-popup .avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--azul-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  flex-shrink: 0;
-}
-.feedback-popup .info {
-  flex: 1;
-}
-.feedback-popup .nome {
-  font-weight: 800;
-  font-size: 13px;
-  color: var(--azul-dark);
-}
-.feedback-popup .stars {
-  color: #FFC700;
-  font-size: 11px;
-  letter-spacing: 1px;
-  margin: 2px 0;
-}
-.feedback-popup .texto {
-  font-size: 12px;
-  color: var(--cinza);
-  line-height: 1.4;
-}
-.feedback-popup .google-tag {
-  font-size: 10px;
-  color: #999;
-  margin-top: 4px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-.feedback-popup .close-btn {
-  position: absolute;
-  top: 8px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  color: #999;
-  line-height: 1;
-  padding: 0;
-}
-
-@media (max-width: 540px) {
-  .feedback-popup {
-    max-width: 260px;
-    left: 12px;
-    bottom: 90px;
-  }
-}
-
 /* ==== BARRA DE URGÊNCIA TOPO ==== */
 .barra-urgencia {
   background: var(--preto);
@@ -1612,6 +1490,7 @@ body {
   fill: white;
 }
 
+
 /* ==== MENSAGEM DE SUCESSO ==== */
 .success-message {
   display: none;
@@ -1637,575 +1516,117 @@ body {
 /* ==== RESPONSIVO ==== */
 /* ===== TABLET (≤968px) ===== */
 @media (max-width: 968px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .hero {
-    padding: 32px 0 48px;
-  }
-
-  .numeros-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-
-  .numero-item .num {
-    font-size: 36px;
-  }
-
-  .passos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .porque-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .depoimentos-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .depo-destaque {
-    grid-column: span 1;
-  }
-
-  .google-badge {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    padding: 14px 20px;
-    text-align: center;
-  }
-
-  .google-stars {
-    border-left: 0;
-    padding-left: 0;
-  }
-
-  .final-cta-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .cta-banner::before {
-    font-size: 180px;
-  }
-
-  .header-cta {
-    padding: 10px 16px;
-    font-size: 12px;
-  }
-
-  .logo {
-    font-size: 22px;
-  }
-
-  .cursos-section,
-  .porque-section,
-  .depoimentos-section,
-  .faq-section,
-  .final-cta,
-  .como-funciona,
-  .niveis-section,
-  .valor-section {
-    padding: 60px 0;
-  }
-
-  .valor-grid {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .valor-card-grande {
-    transform: none;
-  }
-
-  .valor-seta {
-    transform: rotate(90deg);
-    font-size: 40px;
-  }
-
-  .valor-numero {
-    font-size: 44px;
-  }
-
-  .valor-numero-grande {
-    font-size: 56px;
-  }
-
-  .niveis-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .nivel-card.destaque {
-    transform: none;
-    width: 100%;
-    max-width: 480px !important;
-  }
-
-  .nivel-card.destaque:hover {
-    transform: translateY(-4px);
-  }
-
-  .section-header {
-    margin-bottom: 40px;
-  }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero { padding: 32px 0 48px; }
+  .numeros-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .numero-item .num { font-size: 36px; }
+  .passos-grid { grid-template-columns: repeat(2, 1fr); }
+  .depoimentos-grid { grid-template-columns: 1fr; }
+  .depo-destaque { grid-column: span 1; }
+  .google-badge { flex-wrap: wrap; justify-content: center; gap: 12px; padding: 14px 20px; text-align: center; }
+  .google-stars { border-left: 0; padding-left: 0; }
+  .final-cta-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cta-banner::before { font-size: 180px; }
+  .header-cta { padding: 10px 16px; font-size: 12px; }
+  .logo { font-size: 22px; }
+  .cursos-section, .depoimentos-section, .faq-section, .final-cta, .como-funciona, .niveis-section, .valor-section { padding: 60px 0; }
+  .valor-grid { flex-direction: column; gap: 16px; }
+  .valor-card-grande { transform: none; }
+  .valor-seta { transform: rotate(90deg); font-size: 40px; }
+  .valor-numero { font-size: 44px; }
+  .valor-numero-grande { font-size: 56px; }
+  .niveis-grid { flex-direction: column; align-items: center; }
+  .nivel-card.destaque { transform: none; width: 100%; max-width: 480px !important; }
+  .section-header { margin-bottom: 40px; }
 }
 
 /* ===== MOBILE (≤540px) ===== */
 @media (max-width: 540px) {
-
-  /* --- Global --- */
   * { -webkit-tap-highlight-color: transparent; }
-
-  .urgencia-vagas {
-    font-size: 11px;
-    padding: 5px 10px;
-  }
-  .urgencia-prazo {
-    font-size: 10px;
-    padding: 4px 10px;
-  }
-  .countdown-item {
-    font-size: 10px;
-    padding: 1px 4px;
-  }
-
-  .barra-urgencia {
-    font-size: 10px;
-    padding: 8px 12px;
-    letter-spacing: 0.5px;
-  }
-
-  /* --- Header --- */
-  .header-content {
-    padding: 0 16px;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .header-cta {
-    font-size: 11px;
-    padding: 9px 14px;
-  }
-
-  /* --- Hero --- */
-  .hero {
-    padding: 28px 0 40px;
-  }
-
-  .hero-grid {
-    padding: 0 16px;
-    gap: 28px;
-  }
-
-  .hero-badge {
-    font-size: 11px;
-    padding: 7px 13px;
-    margin-bottom: 18px;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-    letter-spacing: -1px;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .hero-subtitle {
-    font-size: 15px;
-    line-height: 1.55;
-    margin-bottom: 24px;
-  }
-
-  .hero-beneficios {
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-
-  .hero-beneficio {
-    font-size: 14px;
-    gap: 10px;
-  }
-
-  .hero-beneficio .check {
-    width: 24px;
-    height: 24px;
-    font-size: 13px;
-    flex-shrink: 0;
-  }
-
-  .hero-numeros {
-    flex-wrap: wrap;
-    gap: 16px 24px;
-    padding-top: 20px;
-  }
-
-  .hero-numero strong {
-    font-size: 26px;
-  }
-
-  .hero-numero span {
-    font-size: 11px;
-  }
-
-  /* --- Form card --- */
-  .form-card {
-    padding: 24px 18px;
-    border-radius: 10px;
-  }
-
-  .form-header h2 {
-    font-size: 20px;
-  }
-
-  .form-header p {
-    font-size: 13px;
-  }
-
-  .form-group label {
-    font-size: 11px;
-  }
-
-  .form-group input,
-  .form-group select {
-    font-size: 15px; /* evita zoom no iOS */
-    padding: 12px 14px;
-  }
-
-  .form-submit {
-    font-size: 14px;
-    padding: 16px;
-  }
-
-  .form-disclaimer {
-    font-size: 12px;
-  }
-
-  .form-trust {
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-
-  .form-trust-item {
-    font-size: 12px;
-  }
-
-  /* --- Seções gerais --- */
-  .cursos-section,
-  .porque-section,
-  .depoimentos-section,
-  .faq-section,
-  .final-cta,
-  .como-funciona,
-  .niveis-section,
-  .valor-section {
-    padding: 48px 0;
-  }
-
-  .section-header {
-    padding: 0 16px;
-    margin-bottom: 28px;
-  }
-
-  .section-title {
-    font-size: 28px;
-    letter-spacing: -1px;
-  }
-
-  .section-subtitle {
-    font-size: 14px;
-  }
-
-  /* --- Card Pós-Médio --- */
-  .niveis-grid {
-    padding: 0 16px;
-  }
-
-  .nivel-card.destaque {
-    max-width: 100% !important;
-    padding: 28px 22px;
-  }
-
-  /* --- Como funciona passos --- */
-  .passos-grid {
-    grid-template-columns: 1fr;
-    padding: 0 16px;
-    gap: 16px;
-  }
-
-  .passo-card {
-    padding: 24px 20px;
-  }
-
-  /* --- Valor section --- */
-  .valor-section {
-    padding: 48px 16px;
-  }
-
-  .valor-title {
-    font-size: 26px !important;
-    letter-spacing: -0.5px;
-  }
-
-  .valor-numero {
-    font-size: 38px;
-  }
-
-  .valor-numero-grande {
-    font-size: 48px;
-  }
-
-  /* --- Cursos grid --- */
-  .cursos-grid {
-    padding: 0 16px;
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .curso-card {
-    padding: 24px 20px;
-  }
-
-  /* --- Por que ETERJ --- */
-  .porque-grid {
-    padding: 0 16px;
-    gap: 16px;
-  }
-
-  .porque-card {
-    padding: 24px 20px;
-  }
-
-  /* --- Números --- */
-  .numeros-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 16px;
-    gap: 12px;
-  }
-
-  .numero-item .num {
-    font-size: 30px;
-  }
-
-  .numero-item .desc {
-    font-size: 11px;
-  }
-
-  /* --- Depoimentos --- */
-  .depoimentos-grid {
-    padding: 0 16px;
-    gap: 16px;
-  }
-
-  .depo-card {
-    padding: 22px 18px;
-  }
-
-  /* --- CTA Banner --- */
-  .cta-banner {
-    padding: 48px 20px;
-  }
-
-  .cta-banner::before {
-    font-size: 100px;
-  }
-
-  .cta-banner h2 {
-    font-size: 24px;
-    letter-spacing: -0.5px;
-  }
-
-  .cta-banner p {
-    font-size: 14px;
-  }
-
-  .cta-banner-btn {
-    font-size: 13px;
-    padding: 16px 24px;
-  }
-
-  /* --- FAQ --- */
-  .faq-container {
-    padding: 0 16px;
-  }
-
-  .faq-question {
-    font-size: 15px;
-    padding: 18px 16px;
-  }
-
-  .faq-answer {
-    font-size: 14px;
-    padding: 0 16px 16px;
-  }
-
-  /* --- Final CTA / form final --- */
-  .final-cta {
-    padding: 48px 16px;
-  }
-
-  /* --- Footer / rodapé --- */
-  footer,
-  .footer,
-  .rodape {
-    padding: 24px 16px;
-    font-size: 13px;
-    text-align: center;
-  }
-
-  /* --- Popup feedback mobile --- */
-  .feedback-popup {
-    max-width: calc(100vw - 24px);
-    left: 12px;
-    bottom: 80px;
-    padding: 12px 14px;
-  }
-  .feedback-popup .avatar {
-    font-size: 18px;
-    width: 36px;
-    height: 36px;
-  }
-  .feedback-popup .nome {
-    font-size: 12px;
-  }
-  .feedback-popup .texto {
-    font-size: 11px;
-  }
-
-  /* --- Hero mobile --- */
-  .hero h1 {
-    font-size: 28px;
-    letter-spacing: -0.5px;
-  }
-  .hero-numeros {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    padding-top: 16px;
-  }
-  .hero-numero strong {
-    font-size: 22px;
-  }
-  .hero-numero span {
-    font-size: 10px;
-  }
-
-  /* --- Form card mobile --- */
-  .form-card {
-    padding: 20px 16px;
-  }
-  .form-header h2 {
-    font-size: 18px;
-  }
-  .form-group input,
-  .form-group select {
-    font-size: 16px;
-    padding: 13px 14px;
-  }
-  .form-submit {
-    font-size: 15px;
-    padding: 16px;
-    letter-spacing: 0.5px;
-  }
-
-  /* --- Cursos mobile --- */
-  .cursos-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    padding: 0 16px;
-  }
-  .curso-card {
-    padding: 20px 16px;
-  }
-  .curso-card h3 {
-    font-size: 18px;
-  }
-
-  /* --- Depoimentos mobile --- */
-  .depo-card {
-    padding: 18px 16px;
-  }
-  .depo-texto {
-    font-size: 13px;
-  }
-
-  /* --- Valor section mobile --- */
-  .valor-grid {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .valor-card-grande {
-    transform: none;
-    max-width: 100%;
-  }
-  .valor-numero-grande {
-    font-size: 44px;
-  }
-  .valor-seta {
-    transform: rotate(90deg);
-    font-size: 32px;
-  }
-
-  /* --- Final CTA mobile --- */
-  .final-cta-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 0 16px;
-  }
-  .final-cta-text h2 {
-    font-size: 26px;
-  }
-  .final-checklist li {
-    font-size: 14px;
-  }
-
-  /* --- FAQ mobile --- */
-  .faq-question {
-    font-size: 14px;
-  }
-  .faq-answer {
-    font-size: 13px;
-  }
-
-  /* --- Niveis mobile --- */
-  .nivel-card {
-    padding: 24px 18px;
-  }
-  .nivel-card h3 {
-    font-size: 20px;
-  }
-
-  /* --- WhatsApp btn mobile --- */
-  .whatsapp-float {
-    width: 52px;
-    height: 52px;
-    bottom: 16px;
-    right: 16px;
-  }
-  .whatsapp-float svg {
-    width: 26px;
-    height: 26px;
-  }
+  .barra-urgencia { font-size: 10px; padding: 7px 12px; }
+  .header { padding: 10px 0; }
+  .header-content { padding: 0 16px; }
+  .logo { font-size: 18px; }
+  .logo img { height: 36px !important; }
+  .header-cta { font-size: 11px; padding: 8px 12px; }
+  .hero { padding: 24px 0 36px; }
+  .hero-grid { padding: 0 16px; gap: 24px; }
+  .hero-badge { font-size: 10px; padding: 6px 12px; margin-bottom: 16px; }
+  .hero h1 { font-size: 30px; letter-spacing: -1px; line-height: 1.05; margin-bottom: 14px; }
+  .hero-subtitle { font-size: 14px; line-height: 1.55; margin-bottom: 20px; }
+  .hero-beneficios { gap: 10px; margin-bottom: 24px; }
+  .hero-beneficio { font-size: 14px; gap: 10px; }
+  .hero-beneficio .check { width: 22px; height: 22px; font-size: 12px; flex-shrink: 0; }
+  .hero-numeros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 16px; }
+  .hero-numero strong { font-size: 20px; }
+  .hero-numero span { font-size: 9px; }
+  .form-card { padding: 20px 16px; border-radius: 10px; }
+  .form-card::before { font-size: 10px; padding: 4px 12px; }
+  .form-header h2 { font-size: 18px; }
+  .form-header p { font-size: 12px; }
+  .form-group { margin-bottom: 12px; }
+  .form-group label { font-size: 11px; }
+  .form-group input, .form-group select { font-size: 16px; padding: 12px 14px; }
+  .form-submit { font-size: 14px; padding: 15px; letter-spacing: 0.5px; }
+  .form-disclaimer { font-size: 11px; }
+  .form-trust { flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .form-trust-item { font-size: 11px; }
+  .cursos-section, .depoimentos-section, .faq-section, .final-cta, .como-funciona, .niveis-section, .valor-section { padding: 44px 0; }
+  .section-header { padding: 0 16px; margin-bottom: 24px; }
+  .section-tag { font-size: 10px; }
+  .section-title { font-size: 26px; letter-spacing: -0.5px; }
+  .section-subtitle { font-size: 13px; }
+  .numeros-section { padding: 28px 0; }
+  .numeros-grid { grid-template-columns: repeat(2, 1fr); padding: 0 16px; gap: 10px; }
+  .numero-item .num { font-size: 28px; }
+  .numero-item .desc { font-size: 10px; }
+  .niveis-grid { padding: 0 16px; }
+  .nivel-card.destaque { max-width: 100% !important; padding: 24px 18px; }
+  .nivel-card h3 { font-size: 20px; }
+  .passos-grid { grid-template-columns: 1fr; padding: 0 16px; gap: 12px; }
+  .passo-card { padding: 20px 16px; }
+  .passo-num { width: 48px; height: 48px; font-size: 20px; }
+  .passo-card h3 { font-size: 16px; }
+  .passo-card p { font-size: 13px; }
+  .valor-section { padding: 44px 16px; }
+  .valor-title { font-size: 22px !important; }
+  .valor-desc { font-size: 14px; }
+  .valor-grid { flex-direction: column; gap: 12px; }
+  .valor-card-grande { transform: none; max-width: 100%; }
+  .valor-numero { font-size: 36px; }
+  .valor-numero-grande { font-size: 44px; }
+  .valor-seta { transform: rotate(90deg); font-size: 32px; }
+  .valor-disclaimer { font-size: 12px; padding: 0 8px; }
+  .cursos-grid { padding: 0 16px; grid-template-columns: 1fr; gap: 12px; }
+  .curso-card { padding: 20px 16px; }
+  .curso-card h3 { font-size: 18px; }
+  .curso-card p { font-size: 13px; }
+  .google-badge-wrap { padding: 0 16px; }
+  .depoimentos-grid { padding: 0 16px; gap: 12px; }
+  .depo-card { padding: 18px 14px; }
+  .depo-texto { font-size: 13px; }
+  .cta-banner { padding: 40px 20px; }
+  .cta-banner::before { font-size: 80px; }
+  .cta-banner h2 { font-size: 22px; }
+  .cta-banner p { font-size: 13px; }
+  .cta-banner-btn { font-size: 13px; padding: 14px 20px; }
+  .faq-container { padding: 0 16px; }
+  .faq-question { font-size: 14px; gap: 12px; }
+  .faq-answer { font-size: 13px; }
+  .final-cta { padding: 44px 0; }
+  .final-cta-grid { grid-template-columns: 1fr; gap: 28px; padding: 0 16px; }
+  .final-cta-text h2 { font-size: 24px; }
+  .final-cta-text p { font-size: 14px; }
+  .final-checklist li { font-size: 13px; }
+  .footer { padding: 28px 16px; }
+  .footer-info { font-size: 13px; }
+  .footer-copy { font-size: 11px; }
+  .feedback-popup { max-width: calc(100vw - 24px); left: 12px; bottom: 16px; padding: 10px 12px; }
 }
+
 </style>
 </head>
 <body>
-
-
-<!-- URGÊNCIA VAGAS + PRAZO -->
-<div class="urgencia-vagas">
-  🔥 Últimas vagas disponíveis! Apenas <span class="vagas-num" id="vagasNum">23</span> inscrições restantes para o Bolsão 2026.2
-</div>
-<div class="urgencia-prazo">
-  ⏰ Inscrições encerram em: <span class="countdown"><span class="countdown-item" id="cdDias">--</span>d <span class="countdown-item" id="cdHoras">--</span>h <span class="countdown-item" id="cdMin">--</span>m <span class="countdown-item" id="cdSeg">--</span>s</span>
-</div>
 
 <!-- BARRA DE URGÊNCIA -->
 <div class="barra-urgencia">
@@ -2297,12 +1718,21 @@ body {
           <input type="tel" id="telefone" name="telefone" placeholder="(21) 9 8888-7777" inputmode="numeric" autocomplete="tel-national" maxlength="16" required>
         </div>
         
-        
         <div class="form-group">
           <label for="cpf">CPF</label>
           <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" maxlength="14" required>
         </div>
         
+        <div class="form-group">
+          <label for="cep">CEP</label>
+          <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric" maxlength="9" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="endereco">Endereço completo</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro" required>
+        </div>
+
         <div class="form-group">
           <label for="segmento">Modalidade</label>
           <select id="segmento" name="segmento" required>
@@ -2319,7 +1749,8 @@ body {
             <option value="informatica">Técnico em Informática</option>
             <option value="eletrotecnica">Técnico em Eletrotécnica</option>
             <option value="eletronica">Técnico em Eletrônica</option>
-            <option value="administracao">Técnico em Administração</option>
+            <option value="eletronica">Técnico em Eletrônica</option>
+          <option value="administracao">Técnico em Administração</option>
           </select>
         </div>
         
@@ -2729,8 +2160,6 @@ body {
       </div>
     </div>
     
-
-    
     <div class="faq-item">
       <div class="faq-question">Onde ficam as unidades da ETERJ?</div>
       <div class="faq-answer">
@@ -2777,6 +2206,14 @@ body {
           <input type="text" name="cpf" placeholder="000.000.000-00" inputmode="numeric" maxlength="14" required>
         </div>
         <div class="form-group">
+          <label>CEP</label>
+          <input type="text" name="cep" placeholder="00000-000" inputmode="numeric" maxlength="9" required>
+        </div>
+        <div class="form-group">
+          <label>Endereço completo</label>
+          <input type="text" name="endereco" placeholder="Rua, número, bairro" required>
+        </div>
+        <div class="form-group">
           <label>Modalidade</label>
           <select name="segmento" required>
             <option value="pos-medio" selected>Pós-Médio Técnico</option>
@@ -2791,7 +2228,8 @@ body {
             <option value="informatica">Técnico em Informática</option>
             <option value="eletrotecnica">Técnico em Eletrotécnica</option>
             <option value="eletronica">Técnico em Eletrônica</option>
-            <option value="administracao">Técnico em Administração</option>
+            <option value="eletronica">Técnico em Eletrônica</option>
+          <option value="administracao">Técnico em Administração</option>
           </select>
         </div>
         <button type="submit" class="form-submit">QUERO MINHA BOLSA →</button>
@@ -2800,6 +2238,14 @@ body {
     </div>
   </div>
 </section>
+
+  <div class="fp-info">
+    <div class="fp-nome" id="popupNome">Jordão Félix</div>
+    <div class="fp-stars">★★★★★</div>
+    <div class="fp-texto" id="popupTexto">Ótimos profissionais e professores. A ETERJ tem convênios com muitas empresas, recomendo!</div>
+    <div class="fp-google">⭐ Avaliação no Google</div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -2815,22 +2261,6 @@ body {
     </div>
   </div>
 </footer>
-
-
-<!-- POPUP FEEDBACKS -->
-<div class="feedback-popup" id="feedbackPopup">
-  <button class="close-btn" onclick="fecharPopup()">✕</button>
-  <div class="avatar" id="popupAvatar">👨</div>
-  <div class="info">
-    <div class="nome" id="popupNome">Jordão Félix</div>
-    <div class="stars">★★★★★</div>
-    <div class="texto" id="popupTexto">Ótimos profissionais, atendimento e professores. A ETERJ tem convênios com muitas empresas, recomendo a todos.</div>
-    <div class="google-tag">
-      <svg width="10" height="10" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-      Avaliação no Google
-    </div>
-  </div>
-</div>
 
 <!-- WHATSAPP FLUTUANTE -->
 <a href="https://wa.me/5521966033904?text=Olá!%20Quero%20participar%20do%20Bolsão%202026.2%20da%20ETERJ" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -2889,6 +2319,31 @@ function selecionarSegmento(segmentoValue) {
 }
 
 
+
+// ==== MÁSCARA DE CEP ====
+document.querySelectorAll('input[name="cep"]').forEach(input => {
+  input.addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.length > 8) v = v.slice(0, 8);
+    if (v.length > 5) v = v.replace(/(\d{5})(\d{1,3})/, '$1-$2');
+    e.target.value = v;
+  });
+  input.addEventListener('blur', function(e) {
+    const digits = e.target.value.replace(/\D/g, '');
+    if (digits.length > 0 && digits.length < 8) {
+      e.target.style.borderColor = '#e53e3e';
+      e.target.setCustomValidity('Informe um CEP válido com 8 dígitos');
+    } else {
+      e.target.style.borderColor = '';
+      e.target.setCustomValidity('');
+    }
+  });
+  input.addEventListener('focus', function(e) {
+    e.target.style.borderColor = '';
+    e.target.setCustomValidity('');
+  });
+});
+
 // ==== MÁSCARA DE CPF ====
 document.querySelectorAll('input[name="cpf"]').forEach(input => {
   function applyCpfMask(v) {
@@ -2899,9 +2354,7 @@ document.querySelectorAll('input[name="cpf"]').forEach(input => {
     if (v.length > 3) return v.replace(/(\d{3})(\d{1,3})/, '$1.$2');
     return v;
   }
-  input.addEventListener('input', function(e) {
-    e.target.value = applyCpfMask(e.target.value);
-  });
+  input.addEventListener('input', function(e) { e.target.value = applyCpfMask(e.target.value); });
   input.addEventListener('blur', function(e) {
     const digits = e.target.value.replace(/\D/g, '');
     if (digits.length > 0 && digits.length < 11) {
@@ -3074,12 +2527,17 @@ document.querySelectorAll('.faq-item').forEach(item => {
 // 5. Substitua os valores abaixo:
 //
 const GOOGLE_FORM_CONFIG = {
+  // URL do Google Form (já com /formResponse no final)
   formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScZMPsIV50ZxGHijGXLgAIxPJs0x5pQ70I--aqF8iwC_Zd7CA/formResponse',
+  
+  // IDs dos campos do Google Form
   fields: {
     nome: 'entry.205633428',
     email: 'entry.1378328386',
     telefone: 'entry.818988254',
     cpf: 'entry.1359402256',
+    cep: 'entry.595752754',
+    endereco: 'entry.1298785894',
     segmento: 'entry.478339883',
     curso: 'entry.1420690312'
   }
@@ -3107,19 +2565,103 @@ function enviarParaGoogleForms(lead) {
   const segmentoTexto = MAPA_SEGMENTO[lead.segmento] || lead.segmento;
   const cursoTexto = MAPA_CURSO[lead.curso] !== undefined ? MAPA_CURSO[lead.curso] : lead.curso;
 
-  const formData = new FormData();
-  formData.append(GOOGLE_FORM_CONFIG.fields.nome, lead.nome);
-  formData.append(GOOGLE_FORM_CONFIG.fields.email, lead.email);
-  formData.append(GOOGLE_FORM_CONFIG.fields.telefone, lead.telefone);
-  formData.append(GOOGLE_FORM_CONFIG.fields.cpf, lead.cpf || '');
-  formData.append(GOOGLE_FORM_CONFIG.fields.segmento, segmentoTexto);
-  formData.append(GOOGLE_FORM_CONFIG.fields.curso, cursoTexto);
+  const params = new URLSearchParams();
+  params.append(GOOGLE_FORM_CONFIG.fields.nome, lead.nome);
+  params.append(GOOGLE_FORM_CONFIG.fields.email, lead.email);
+  params.append(GOOGLE_FORM_CONFIG.fields.telefone, lead.telefone);
+  params.append(GOOGLE_FORM_CONFIG.fields.cpf, lead.cpf || '');
+  params.append(GOOGLE_FORM_CONFIG.fields.cep, lead.cep || '');
+  params.append(GOOGLE_FORM_CONFIG.fields.endereco, lead.endereco || '');
+  params.append(GOOGLE_FORM_CONFIG.fields.segmento, segmentoTexto);
+  params.append(GOOGLE_FORM_CONFIG.fields.curso, cursoTexto);
 
-  return fetch(GOOGLE_FORM_CONFIG.formUrl, {
-    method: 'POST',
-    mode: 'no-cors',
-    body: formData
+  // Técnica mais compatível com mobile - usa iframe invisível
+  const iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.name = 'hidden_iframe_' + Date.now();
+  document.body.appendChild(iframe);
+
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = GOOGLE_FORM_CONFIG.formUrl;
+  form.target = iframe.name;
+  form.style.display = 'none';
+
+  params.forEach((value, key) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = value;
+    form.appendChild(input);
   });
+
+  document.body.appendChild(form);
+  form.submit();
+
+  // Limpa após envio
+  setTimeout(() => {
+    document.body.removeChild(form);
+    document.body.removeChild(iframe);
+  }, 3000);
+
+  return Promise.resolve();
+}
+
+// ==== VALIDAÇÃO DE CAMPOS OBRIGATÓRIOS ====
+function validarCamposObrigatorios(form) {
+  const camposObrigatorios = form.querySelectorAll('input[required], select[required]');
+  let valido = true;
+
+  camposObrigatorios.forEach(campo => {
+    // Remove erro anterior
+    campo.style.borderColor = '';
+    const erroAnterior = campo.parentElement.querySelector('.erro-campo');
+    if (erroAnterior) erroAnterior.remove();
+
+    const vazio = campo.tagName === 'SELECT'
+      ? campo.value === ''
+      : campo.value.trim() === '';
+
+    if (vazio) {
+      valido = false;
+      campo.style.borderColor = '#E53935';
+      campo.style.boxShadow = '0 0 0 4px rgba(229,57,53,0.15)';
+
+      const erro = document.createElement('span');
+      erro.className = 'erro-campo';
+      erro.style.cssText = 'color:#E53935;font-size:11px;font-weight:700;margin-top:4px;display:block;';
+      erro.textContent = 'Este campo é obrigatório';
+      campo.parentElement.appendChild(erro);
+
+      // Reseta estilo quando o usuário começa a digitar
+      campo.addEventListener('input', function limpa() {
+        campo.style.borderColor = '';
+        campo.style.boxShadow = '';
+        const e = campo.parentElement.querySelector('.erro-campo');
+        if (e) e.remove();
+        campo.removeEventListener('input', limpa);
+      }, { once: true });
+
+      campo.addEventListener('change', function limpa() {
+        campo.style.borderColor = '';
+        campo.style.boxShadow = '';
+        const e = campo.parentElement.querySelector('.erro-campo');
+        if (e) e.remove();
+        campo.removeEventListener('change', limpa);
+      }, { once: true });
+    }
+  });
+
+  // Foca no primeiro campo inválido
+  if (!valido) {
+    const primeiro = form.querySelector('input[required][style*="E53935"], select[required][style*="E53935"]');
+    if (primeiro) {
+      primeiro.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(() => primeiro.focus(), 400);
+    }
+  }
+
+  return valido;
 }
 
 function handleSubmit(formId, msgId) {
@@ -3128,6 +2670,9 @@ function handleSubmit(formId, msgId) {
   
   form.addEventListener('submit', function(e) {
     e.preventDefault();
+
+    // Valida antes de qualquer coisa
+    if (!validarCamposObrigatorios(form)) return;
     
     const submitBtn = form.querySelector('.form-submit');
     const originalText = submitBtn.innerText;
@@ -3135,27 +2680,15 @@ function handleSubmit(formId, msgId) {
     submitBtn.disabled = true;
     
     const data = new FormData(form);
-
-    // Validação de e-mail
-    const emailValue = data.get('email');
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailValue)) {
-      const emailInput = form.querySelector('input[type="email"]');
-      emailInput.style.borderColor = '#e53e3e';
-      emailInput.setCustomValidity('Informe um e-mail válido (ex: nome@gmail.com)');
-      emailInput.reportValidity();
-      submitBtn.innerText = originalText;
-      submitBtn.disabled = false;
-      return;
-    }
-
     const lead = {
       nome: data.get('nome'),
-      email: emailValue,
+      email: data.get('email'),
       telefone: data.get('telefone'),
       segmento: data.get('segmento'),
       curso: data.get('curso') || 'Não informado',
       cpf: data.get('cpf') || '',
+      cep: data.get('cep') || '',
+      endereco: data.get('endereco') || '',
       origem: 'landing-page-bolsao-eterj-2026',
       timestamp: new Date().toISOString()
     };
@@ -3206,72 +2739,27 @@ handleSubmit('leadForm', 'successMsg');
 handleSubmit('leadForm2', null);
 
 
-// ==== POPUP DE FEEDBACKS ====
-const feedbacks = [
-  { nome: 'Jordão Félix', avatar: '👨', texto: 'Ótimos profissionais, atendimento e professores. A ETERJ tem convênios com muitas empresas, recomendo a todos.' },
-  { nome: 'KZ Music', avatar: '👩', texto: 'Professores muito bons, coordenação muito atenciosa e sempre comunicam vagas de estágio. As empresas sempre elogiam a ETERJ!' },
-  { nome: 'Antonio Lima', avatar: '👨', texto: 'Escola excelente. Índice de aprendizado chega a 100%. Recomendo demais!' },
-  { nome: 'Pablo Affonso', avatar: '👩', texto: 'Uma escola excelente. Os professores são ótimos e o aprendizado é de altíssimo nível.' },
-  { nome: 'João A. Guimarães', avatar: '👨', texto: 'O ensino é excelente. Eu recomendo com nota 1000. Melhor escola técnica do Rio!' },
-  { nome: 'Camila Souza', avatar: '👩', texto: 'Meu filho se formou aqui e já está estagiando. A escola abre muitas portas no mercado de trabalho.' },
-];
 
-let popupIndex = 0;
-let popupTimer = null;
-
-function mostrarPopup() {
-  const popup = document.getElementById('feedbackPopup');
-  const f = feedbacks[popupIndex % feedbacks.length];
-  document.getElementById('popupNome').textContent = f.nome;
-  document.getElementById('popupAvatar').textContent = f.avatar;
-  document.getElementById('popupTexto').textContent = f.texto;
-  popup.classList.add('show');
-  popupIndex++;
-  setTimeout(() => popup.classList.remove('show'), 6000);
-}
-
-function fecharPopup() {
-  document.getElementById('feedbackPopup').classList.remove('show');
-}
-
-// Exibe o primeiro popup após 5 segundos, depois a cada 12 segundos
-setTimeout(() => {
-  mostrarPopup();
-  popupTimer = setInterval(mostrarPopup, 12000);
-}, 5000);
-
-// ==== COUNTDOWN ==== 
-function atualizarCountdown() {
-  const prazo = new Date('2026-06-15T23:59:59');
-  const agora = new Date();
-  const diff = prazo - agora;
-  if (diff <= 0) {
-    document.querySelector('.urgencia-prazo').textContent = '⏰ Inscrições encerradas!';
-    return;
-  }
-  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const min = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seg = Math.floor((diff % (1000 * 60)) / 1000);
-  document.getElementById('cdDias').textContent = String(dias).padStart(2,'0');
-  document.getElementById('cdHoras').textContent = String(horas).padStart(2,'0');
-  document.getElementById('cdMin').textContent = String(min).padStart(2,'0');
-  document.getElementById('cdSeg').textContent = String(seg).padStart(2,'0');
-}
-atualizarCountdown();
-setInterval(atualizarCountdown, 1000);
-
-// ==== VAGAS DECRESCENTES ====
-let vagas = 23;
-function decrementarVagas() {
-  if (vagas > 8) {
-    vagas -= Math.floor(Math.random() * 2);
-    const el = document.getElementById('vagasNum');
-    if (el) el.textContent = vagas;
-  }
-}
-setInterval(decrementarVagas, 45000);
-
+// ==== AUTOCOMPLETE CEP → ENDEREÇO ====
+document.querySelectorAll('input[name="cep"]').forEach(cepInput => {
+  cepInput.addEventListener('blur', function() {
+    const cep = this.value.replace(/\D/g, '');
+    if (cep.length !== 8) return;
+    fetch('https://viacep.com.br/ws/' + cep + '/json/')
+      .then(r => r.json())
+      .then(data => {
+        if (data.erro) return;
+        // Preenche o campo endereço mais próximo
+        const form = this.closest('form');
+        if (!form) return;
+        const endInput = form.querySelector('input[name="endereco"]');
+        if (endInput && !endInput.value) {
+          endInput.value = data.logradouro + ', ' + data.bairro + ', ' + data.localidade + ' - ' + data.uf;
+        }
+      })
+      .catch(() => {});
+  });
+});
 
 // ==== TRACKING DE SCROLL ====
 let scrollMarkers = { 25: false, 50: false, 75: false, 100: false };
