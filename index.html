@@ -2526,21 +2526,17 @@ document.querySelectorAll('.faq-item').forEach(item => {
 // 4. Pegue a URL do form e os IDs dos campos (instruções no final)
 // 5. Substitua os valores abaixo:
 //
-const GOOGLE_FORM_CONFIG = {
-  // URL do Google Form (já com /formResponse no final)
-  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScZMPsIV50ZxGHijGXLgAIxPJs0x5pQ70I--aqF8iwC_Zd7CA/formResponse',
-  
-  // IDs dos campos do Google Form
-  fields: {
-    nome: 'entry.205633428',
-    email: 'entry.1378328386',
-    telefone: 'entry.818988254',
-    cpf: 'entry.1359402256',
-    cep: 'entry.595752754',
-    endereco: 'entry.1298785894',
-    segmento: 'entry.478339883',
-    curso: 'entry.1420690312'
-  }
+// ==== CONFIGURAÇÃO GOOGLE FORMS ====
+const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScZMPsIV50ZxGHijGXLgAIxPJs0x5pQ70I--aqF8iwC_Zd7CA/formResponse';
+const FORM_FIELDS = {
+  nome:     'entry.205633428',
+  email:    'entry.1378328386',
+  telefone: 'entry.818988254',
+  cpf:      'entry.1359402256',
+  cep:      'entry.595752754',
+  endereco: 'entry.1298785894',
+  segmento: 'entry.478339883',
+  curso:    'entry.1420690312'
 };
 
 // Mapeamento dos valores da landing para os valores cadastrados no Google Form
@@ -2565,75 +2561,21 @@ function enviarParaGoogleForms(lead) {
   const segmentoTexto = MAPA_SEGMENTO[lead.segmento] || lead.segmento;
   const cursoTexto = MAPA_CURSO[lead.curso] !== undefined ? MAPA_CURSO[lead.curso] : lead.curso;
 
-  const params = new URLSearchParams();
-  params.append(GOOGLE_FORM_CONFIG.fields.nome, lead.nome);
-  params.append(GOOGLE_FORM_CONFIG.fields.email, lead.email);
-  params.append(GOOGLE_FORM_CONFIG.fields.telefone, lead.telefone);
-  params.append(GOOGLE_FORM_CONFIG.fields.cpf, lead.cpf || '');
-  params.append(GOOGLE_FORM_CONFIG.fields.cep, lead.cep || '');
-  params.append(GOOGLE_FORM_CONFIG.fields.endereco, lead.endereco || '');
-  params.append(GOOGLE_FORM_CONFIG.fields.segmento, segmentoTexto);
-  params.append(GOOGLE_FORM_CONFIG.fields.curso, cursoTexto);
-
-  // Salva backup local antes de enviar
-  try {
-    const backup = JSON.parse(localStorage.getItem('leads_backup') || '[]');
-    backup.push({ ...lead, segmentoTexto, cursoTexto, ts: Date.now() });
-    localStorage.setItem('leads_backup', JSON.stringify(backup));
-  } catch(e) {}
-
-  // Iframe oculto — método mais compatível cross-browser/mobile
-  // O fetch no-cors é bloqueado por Safari iOS e Chrome Android (ITP / third-party policy)
-  // O POST via iframe é um submit real de formulário, sem restrições de CORS
-  return new Promise((resolve) => {
-    const iframeName = 'gf_iframe_' + Date.now();
-
-    const iframe = document.createElement('iframe');
-    iframe.name = iframeName;
-    iframe.style.cssText = 'display:none;width:0;height:0;border:0;position:absolute;top:-9999px;';
-    document.body.appendChild(iframe);
-
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = GOOGLE_FORM_CONFIG.formUrl;
-    form.target = iframeName;
-    form.style.display = 'none';
-    form.setAttribute('autocomplete', 'off');
-
-    params.forEach((value, key) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = value;
-      form.appendChild(input);
-    });
-
-    document.body.appendChild(form);
-
-    // Espera o iframe estar pronto antes de submeter
-    iframe.onload = function() {
-      // iframe carregou = Google Forms processou
-      // Limpa depois de mais 2s por segurança
-      setTimeout(() => {
-        try { document.body.removeChild(form); } catch(e) {}
-        try { document.body.removeChild(iframe); } catch(e) {}
-      }, 2000);
-      resolve();
-    };
-
-    // Timeout de segurança: 15s (cobre conexões lentas de mobile)
-    // Se o onload não disparar (Safari às vezes não dispara em no-cors),
-    // resolve mesmo assim para não travar o fluxo do usuário
-    const timeout = setTimeout(() => {
-      try { document.body.removeChild(form); } catch(e) {}
-      try { document.body.removeChild(iframe); } catch(e) {}
-      resolve();
-    }, 15000);
-
-    iframe.addEventListener('load', () => clearTimeout(timeout), { once: true });
-
-    form.submit();
+  const params = new URLSearchParams({
+    nome:     lead.nome,
+    email:    lead.email,
+    telefone: lead.telefone,
+    cpf:      lead.cpf || '',
+    cep:      lead.cep || '',
+    endereco: lead.endereco || '',
+    segmento: segmentoTexto,
+    curso:    cursoTexto
   });
+
+  const img = new Image();
+  img.src = 'https://script.google.com/macros/s/AKfycbw1-dRKoF61nMrtRbzly6E9bjK5QLr0qP0M2mjUvoH_oydAmXUqIV_YwJunTamerXDD/exec?' + params.toString();
+
+  return Promise.resolve();
 }
 
 // ==== VALIDAÇÃO DE CAMPOS OBRIGATÓRIOS ====
