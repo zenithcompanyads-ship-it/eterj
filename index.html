@@ -2575,36 +2575,55 @@ function enviarParaGoogleForms(lead) {
   params.append(GOOGLE_FORM_CONFIG.fields.segmento, segmentoTexto);
   params.append(GOOGLE_FORM_CONFIG.fields.curso, cursoTexto);
 
-  // Técnica mais compatível com mobile - usa iframe invisível
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  iframe.name = 'hidden_iframe_' + Date.now();
-  document.body.appendChild(iframe);
+  // Salva backup local antes de enviar
+  try {
+    const backup = JSON.parse(localStorage.getItem('leads_backup') || '[]');
+    backup.push({ ...lead, segmentoTexto, cursoTexto, ts: Date.now() });
+    localStorage.setItem('leads_backup', JSON.stringify(backup));
+  } catch(e) {}
 
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = GOOGLE_FORM_CONFIG.formUrl;
-  form.target = iframe.name;
-  form.style.display = 'none';
+  // Fetch no-cors — mais confiável que iframe, funciona melhor no mobile
+  function tentarFetch() {
+    return fetch(GOOGLE_FORM_CONFIG.formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    });
+  }
 
-  params.forEach((value, key) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = value;
-    form.appendChild(input);
-  });
+  // Tentativa principal + 1 retry automático após 2s se falhar
+  return tentarFetch()
+    .catch(() => new Promise(res => setTimeout(res, 2000)).then(tentarFetch))
+    .catch(() => {
+      // Fallback final: iframe (último recurso para browsers que bloqueiam fetch cross-origin)
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.name = 'hidden_iframe_' + Date.now();
+      document.body.appendChild(iframe);
 
-  document.body.appendChild(form);
-  form.submit();
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = GOOGLE_FORM_CONFIG.formUrl;
+      form.target = iframe.name;
+      form.style.display = 'none';
 
-  // Limpa após envio
-  setTimeout(() => {
-    document.body.removeChild(form);
-    document.body.removeChild(iframe);
-  }, 3000);
+      params.forEach((value, key) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+      });
 
-  return Promise.resolve();
+      document.body.appendChild(form);
+      form.submit();
+
+      // 8s para dar tempo em conexões lentas
+      setTimeout(() => {
+        try { document.body.removeChild(form); document.body.removeChild(iframe); } catch(e) {}
+      }, 8000);
+    });
 }
 
 // ==== VALIDAÇÃO DE CAMPOS OBRIGATÓRIOS ====
