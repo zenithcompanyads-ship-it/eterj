@@ -1109,13 +1109,191 @@ button{ font-family:inherit; cursor:pointer; border:none; }
   .investimento-box{ padding:32px 22px; }
   .footer{ padding-bottom: 110px; }
 }
+
+/* ============================================================
+   POP-UP DE INSCRIÇÃO (30s)
+   ============================================================ */
+.popup-overlay{
+  position:fixed; inset:0; z-index:10000;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(4px);
+  display:flex; align-items:center; justify-content:center;
+  padding:20px;
+  opacity:0; visibility:hidden;
+  transition:opacity .35s ease, visibility .35s ease;
+}
+.popup-overlay.ativo{
+  opacity:1; visibility:visible;
+}
+.popup-card{
+  background:#fff;
+  border-radius:20px;
+  max-width:420px; width:100%;
+  padding:40px 32px 32px;
+  position:relative;
+  box-shadow:0 24px 64px rgba(0,0,0,0.25);
+  text-align:center;
+  animation:popupEntrar .4s cubic-bezier(.22,1,.36,1);
+}
+@keyframes popupEntrar{
+  from{ opacity:0; transform:scale(0.9) translateY(20px); }
+  to{ opacity:1; transform:scale(1) translateY(0); }
+}
+.popup-fechar{
+  position:absolute; top:14px; right:16px;
+  background:none; border:none;
+  font-size:22px; color:#8E99A4;
+  cursor:pointer; width:36px; height:36px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  transition:background .2s;
+}
+.popup-fechar:hover{ background:#f0f0f0; color:#333; }
+.popup-icone{
+  width:64px; height:64px;
+  background:linear-gradient(135deg,#FF6B1A,#FF8F4F);
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 18px;
+  font-size:28px; color:#fff;
+}
+.popup-titulo{
+  font-family:'Archivo Black','Arial Black','Helvetica Neue',Arial,sans-serif;
+  font-size:clamp(20px,4vw,24px);
+  color:#0B3D91;
+  margin-bottom:8px;
+  line-height:1.2;
+}
+.popup-texto{
+  font-size:15px; color:#5A6A7A;
+  line-height:1.55;
+  margin-bottom:22px;
+}
+.popup-texto strong{ color:#1A1A2E; }
+.popup-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(135deg,#FF6B1A,#FF8F4F);
+  color:#fff;
+  font-family:'Manrope','Segoe UI',Arial,sans-serif;
+  font-weight:700; font-size:16px;
+  padding:14px 32px;
+  border:none; border-radius:12px;
+  cursor:pointer;
+  transition:transform .2s, box-shadow .2s;
+  text-decoration:none;
+  box-shadow:0 4px 16px rgba(255,107,26,0.35);
+}
+.popup-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(255,107,26,0.45);
+}
+.popup-sub{
+  font-size:12px; color:#8E99A4;
+  margin-top:14px;
+}
+@media(max-width:480px){
+  .popup-card{ padding:32px 20px 24px; }
+}
+
+/* ============================================================
+   PUSH NOTIFICATION (prova social)
+   ============================================================ */
+.push-notif{
+  position:fixed;
+  bottom:24px; left:24px;
+  z-index:9000;
+  background:#fff;
+  border-radius:14px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08);
+  padding:14px 18px 14px 14px;
+  display:flex; align-items:center; gap:12px;
+  max-width:340px; width:calc(100vw - 48px);
+  transform:translateX(-120%);
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+  cursor:pointer;
+}
+.push-notif.ativo{
+  transform:translateX(0);
+}
+.push-notif-avatar{
+  width:42px; height:42px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#0B3D91,#1A5BC4);
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+  font-size:18px; color:#fff; font-weight:700;
+}
+.push-notif-corpo{
+  flex:1; min-width:0;
+}
+.push-notif-nome{
+  font-weight:700; font-size:13.5px; color:#1A1A2E;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.push-notif-msg{
+  font-size:12.5px; color:#5A6A7A;
+  line-height:1.35; margin-top:2px;
+}
+.push-notif-tempo{
+  font-size:11px; color:#8E99A4;
+  margin-top:3px;
+}
+.push-notif-badge{
+  width:8px; height:8px;
+  background:#25D366;
+  border-radius:50%;
+  flex-shrink:0;
+  animation:pulseBadge 1.5s ease infinite;
+}
+@keyframes pulseBadge{
+  0%,100%{ opacity:1; transform:scale(1); }
+  50%{ opacity:.6; transform:scale(1.3); }
+}
+@media(max-width:719px){
+  .push-notif{ bottom:90px; left:12px; max-width:300px; }
+}
+
+/* barra de urgência removida */
+
+/* ============================================================
+   CONTADOR DE VISITANTES ONLINE
+   ============================================================ */
+.online-badge{
+  position:fixed;
+  top:80px; right:20px;
+  z-index:8000;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.12);
+  padding:8px 14px;
+  display:flex; align-items:center; gap:8px;
+  font-family:'Manrope','Segoe UI',Arial,sans-serif;
+  font-size:12.5px; color:#5A6A7A; font-weight:600;
+  opacity:0; transform:translateY(-10px);
+  transition:opacity .4s ease, transform .4s ease;
+}
+.online-badge.ativo{
+  opacity:1; transform:translateY(0);
+}
+.online-dot{
+  width:8px; height:8px;
+  background:#25D366;
+  border-radius:50%;
+  animation:pulseBadge 1.5s ease infinite;
+}
+.online-num{
+  color:#FF6B1A; font-weight:800;
+}
+@media(max-width:719px){
+  .online-badge{ top:auto; bottom:90px; right:12px; font-size:11.5px; padding:6px 10px; }
+}
 </style>
 </head>
 <body>
 
 <!-- BARRA DE URGÊNCIA -->
 <div class="barra-topo">
-  Bolsão ETERJ 2027 · inscrições abertas para <b>Fundamental, Médio Técnico e Pós-Médio</b>
+  Bolsão ETERJ 2027 · inscrições a partir de 28/09 para <b>Fundamental, Médio Técnico e Pós-Médio</b>
 </div>
 
 <!-- HEADER -->
@@ -1130,10 +1308,10 @@ button{ font-family:inherit; cursor:pointer; border:none; }
 <section class="hero">
   <div class="container hero-grid">
     <div>
-      <div class="hero-badge"><span class="ponto"></span> BOLSÃO 2027 · INSCRIÇÕES ABERTAS</div>
+      <div class="hero-badge"><span class="ponto"></span> BOLSÃO 2027 · INSCRIÇÕES A PARTIR DE 28/09</div>
       <h1>Estude na ETERJ com <span class="grifo">até 100% de bolsa</span> de estudo</h1>
       <p class="hero-subtitle">
-        Participe do Bolsão ETERJ 2027 e garanta seu desconto no Fundamental, Médio Técnico ou Pós-Médio Técnico. <strong>Inscreva-se na prova, mostre seu potencial e estude pagando menos.</strong>
+        A partir do dia 28, inscreva-se no Bolsão ETERJ 2027 e garanta seu desconto no Fundamental, Médio Técnico ou Pós-Médio Técnico. <strong>Faça a prova, mostre seu potencial e estude pagando menos.</strong>
       </p>
 
       <div class="hero-beneficios">
@@ -1243,7 +1421,6 @@ button{ font-family:inherit; cursor:pointer; border:none; }
               <option value="informatica">Técnico em Informática</option>
               <option value="eletrotecnica">Técnico em Eletrotécnica</option>
               <option value="eletronica">Técnico em Eletrônica</option>
-              <option value="administracao">Técnico em Administração</option>
               <option value="nao-aplica">Não se aplica</option>
             </select>
           </div>
@@ -1252,7 +1429,7 @@ button{ font-family:inherit; cursor:pointer; border:none; }
         <div class="form-rodape">
           <button type="submit" class="btn btn-primario btn-bloco">Quero minha bolsa</button>
           <span class="form-seguranca">🔒 Seus dados estão protegidos. Taxa de inscrição: R$ 15.</span>
-          <a href="https://www.eterj.com.br/downloads/regulamento-bolsao-2025-3.pdf" target="_blank" rel="noopener" style="font-size:11.5px;color:var(--cinza-suave);text-decoration:underline;">Consulte o regulamento do Bolsão</a>
+          <a href="https://www.eterj.com.br/downloads/regulamento-bolsao-2027.pdf" target="_blank" rel="noopener" style="font-size:11.5px;color:var(--cinza-suave);text-decoration:underline;">Consulte o regulamento do Bolsão</a>
         </div>
       </form>
 
@@ -1276,7 +1453,7 @@ button{ font-family:inherit; cursor:pointer; border:none; }
     <div class="modalidades-cabecalho">
       <span class="modalidades-tag">// MODALIDADES</span>
       <h2>Para qual nível você quer a bolsa?</h2>
-      <p>O Bolsão 2027 oferece bolsas de até 100% para três níveis de ensino. Escolha o seu e inscreva-se na prova.</p>
+      <p>O Bolsão 2027 oferece bolsas de até 100% para três níveis de ensino. Escolha o seu e garanta sua vaga a partir do dia 28.</p>
     </div>
 
     <div class="modalidades-grid">
@@ -1296,7 +1473,7 @@ button{ font-family:inherit; cursor:pointer; border:none; }
       <div class="mod-card" onclick="selecionarSegmento('medio-tecnico')">
         <span class="mod-card-tag medio">MÉDIO TÉCNICO</span>
         <h3>Médio Técnico</h3>
-        <p class="mod-card-desc">Formação técnica profissionalizante com aulas práticas para os cursos de Administração, Automação Industrial, Eletrônica, Eletrotécnica, Informática e Mecânica.</p>
+        <p class="mod-card-desc">Formação técnica profissionalizante com aulas práticas para os cursos de Automação Industrial, Eletrônica, Eletrotécnica, Informática e Mecânica.</p>
         <div class="mod-card-checks">
           <span><span class="ck">✓</span> Matutino: 07h às 12h20</span>
           <span><span class="ck">✓</span> Vespertino: 13h às 18h</span>
@@ -1437,15 +1614,6 @@ button{ font-family:inherit; cursor:pointer; border:none; }
         <p>Circuitos, sistemas embarcados e eletrônica de potência para quem quer atuar com automação e telecom.</p>
         <span class="curso-cta">Selecionar este curso</span>
       </div>
-      <div class="curso-item" onclick="selecionarCurso('administracao')">
-        <div class="curso-topo">
-          <span class="curso-icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></span>
-          <span class="curso-tag">TÉCNICO</span>
-        </div>
-        <h3>Administração</h3>
-        <p>Gestão de processos, equipes e negócios: uma formação técnica que serve pra qualquer setor da economia.</p>
-        <span class="curso-cta">Selecionar este curso</span>
-      </div>
     </div>
   </div>
 </section>
@@ -1557,6 +1725,10 @@ button{ font-family:inherit; cursor:pointer; border:none; }
           <div class="faq-pergunta">Onde fica a unidade da ETERJ?<span class="sinal">+</span></div>
           <div class="faq-resposta"><p>Av. Santa Cruz, 9591, Santíssimo, Rio de Janeiro. Contato: (21) 96603-3904.</p></div>
         </div>
+        <div class="faq-item">
+          <div class="faq-pergunta">Onde posso ler o regulamento completo?<span class="sinal">+</span></div>
+          <div class="faq-resposta"><p>O regulamento completo do Bolsão 2027 está disponível para download. <a href="https://www.eterj.com.br/downloads/regulamento-bolsao-2027.pdf" target="_blank" rel="noopener" style="color:var(--laranja);font-weight:700;text-decoration:underline;">Clique aqui para acessar o regulamento (PDF)</a>.</p></div>
+        </div>
       </div>
 
       <div class="faq-contato">
@@ -1648,7 +1820,6 @@ button{ font-family:inherit; cursor:pointer; border:none; }
               <option value="informatica">Técnico em Informática</option>
               <option value="eletrotecnica">Técnico em Eletrotécnica</option>
               <option value="eletronica">Técnico em Eletrônica</option>
-              <option value="administracao">Técnico em Administração</option>
               <option value="nao-aplica">Não se aplica</option>
             </select>
           </div>
@@ -1657,7 +1828,7 @@ button{ font-family:inherit; cursor:pointer; border:none; }
         <div class="form-rodape">
           <button type="submit" class="btn btn-primario btn-bloco">Quero minha bolsa</button>
           <span class="form-seguranca">🔒 Seus dados estão protegidos. Taxa de inscrição: R$ 15.</span>
-          <a href="https://www.eterj.com.br/downloads/regulamento-bolsao-2025-3.pdf" target="_blank" rel="noopener" style="font-size:11.5px;color:var(--cinza-suave);text-decoration:underline;">Consulte o regulamento do Bolsão</a>
+          <a href="https://www.eterj.com.br/downloads/regulamento-bolsao-2027.pdf" target="_blank" rel="noopener" style="font-size:11.5px;color:var(--cinza-suave);text-decoration:underline;">Consulte o regulamento do Bolsão</a>
         </div>
       </form>
 
@@ -1810,7 +1981,6 @@ var OPCOES_CURSOS = [
   { value: 'informatica', text: 'Técnico em Informática' },
   { value: 'eletrotecnica', text: 'Técnico em Eletrotécnica' },
   { value: 'eletronica', text: 'Técnico em Eletrônica' },
-  { value: 'administracao', text: 'Técnico em Administração' }
 ];
 var OPCOES_ANOS = [
   { value: '', text: 'Selecione o ano' },
@@ -1894,7 +2064,7 @@ document.querySelectorAll('.faq-item').forEach(function(item){
 // ============================================================
 // Cole aqui a URL do Google Apps Script (Web App) da sua planilha.
 // Siga o passo a passo que está no final deste arquivo.
-var PLANILHA_URL = 'https://script.google.com/macros/s/AKfycbwYugOvBLkpwW9y8SpAB524s4T_iHsSkKGzddu7SXJlkVsoVtHaS4qbPQ0J0dBuv0_D/exec'; // ← COLE A URL AQUI (ex: 'https://script.google.com/macros/s/XXXX/exec')
+var PLANILHA_URL = 'https://script.google.com/macros/s/AKfycbxjpcmxyfswsOTty5Xc6h8HUGhXoSrBNcf_8QbGib1gQRoRRCmDBinDcyU06cmJZHps/exec';
 
 // Número do WhatsApp da ETERJ
 var WHATSAPP_NUM = '5521966033904';
@@ -1911,7 +2081,6 @@ var MAPA_CURSO = {
   'informatica': 'Técnico em Informática',
   'eletrotecnica': 'Técnico em Eletrotécnica',
   'eletronica': 'Técnico em Eletrônica',
-  'administracao': 'Técnico em Administração',
   '1-ou-2-ano': '1° Ano ou 2° Ano (sorteio)',
   '3-ano': '3° Ano',
   '4-ano': '4° Ano',
@@ -2066,6 +2235,149 @@ document.querySelectorAll('form.lead-form').forEach(function(form){
   }, { threshold: 0 });
 
   observer.observe(hero);
+})();
+</script>
+
+<!-- BADGE VISITANTES ONLINE -->
+<div class="online-badge" id="online-badge">
+  <div class="online-dot"></div>
+  <span><span class="online-num" id="online-count">34</span> pessoas vendo agora</span>
+</div>
+
+<!-- PUSH NOTIFICATION (prova social) -->
+<div class="push-notif" id="push-notif">
+  <div class="push-notif-avatar" id="push-avatar">M</div>
+  <div class="push-notif-corpo">
+    <div class="push-notif-nome" id="push-nome">Maria S.</div>
+    <div class="push-notif-msg" id="push-msg">acabou de se inscrever no Bolsão</div>
+    <div class="push-notif-tempo" id="push-tempo">há 2 minutos</div>
+  </div>
+  <div class="push-notif-badge"></div>
+</div>
+
+<script>
+(function(){
+  // ============================================================
+  // BADGE VISITANTES ONLINE
+  // ============================================================
+  var onlineBadge = document.getElementById('online-badge');
+  var onlineCount = document.getElementById('online-count');
+  var baseOnline = 34;
+
+  setTimeout(function(){
+    if(onlineBadge) onlineBadge.classList.add('ativo');
+  }, 5000);
+
+  function variarOnline(){
+    baseOnline = Math.max(18, Math.min(52, baseOnline + Math.floor(Math.random() * 7) - 3));
+    if(onlineCount) onlineCount.textContent = baseOnline;
+    setTimeout(variarOnline, (Math.random() * 8000) + 5000);
+  }
+  setTimeout(variarOnline, 10000);
+
+  // ============================================================
+  // PUSH NOTIFICATIONS (prova social)
+  // ============================================================
+  var nomes = [
+    'Maria S.','João P.','Ana L.','Carlos R.','Fernanda M.',
+    'Pedro H.','Juliana C.','Lucas A.','Beatriz F.','Rafael G.',
+    'Camila O.','Bruno T.','Larissa V.','Diego N.','Patricia K.',
+    'Thiago B.','Amanda D.','Gabriel E.','Isabela W.','Matheus J.'
+  ];
+  var bairros = [
+    'Santíssimo','Campo Grande','Bangu','Realengo','Padre Miguel',
+    'Senador Camará','Guilherme da Silveira','Cosmos','Inhoaíba',
+    'Paciência','Santa Cruz','Sepetiba','Jardim Sulacap',
+    'Magalhães Bastos','Vila Militar','Deodoro','Ricardo de Albuquerque'
+  ];
+  var segmentos = ['Fundamental','Médio Técnico','Pós-Médio Técnico'];
+  var tempos = ['agora mesmo','há 1 minuto','há 2 minutos','há 3 minutos','há 5 minutos'];
+
+  var pushEl = document.getElementById('push-notif');
+  var pushNome = document.getElementById('push-nome');
+  var pushAvatar = document.getElementById('push-avatar');
+  var pushMsg = document.getElementById('push-msg');
+  var pushTempo = document.getElementById('push-tempo');
+  var pushIndex = 0;
+
+  function mostrarPush(){
+    var nome = nomes[Math.floor(Math.random() * nomes.length)];
+    var bairro = bairros[Math.floor(Math.random() * bairros.length)];
+    var seg = segmentos[Math.floor(Math.random() * segmentos.length)];
+    var tempo = tempos[Math.floor(Math.random() * tempos.length)];
+
+    if(pushNome) pushNome.textContent = nome;
+    if(pushAvatar) pushAvatar.textContent = nome.charAt(0);
+    if(pushMsg) pushMsg.textContent = 'de ' + bairro + ' se inscreveu para ' + seg;
+    if(pushTempo) pushTempo.textContent = tempo;
+
+    if(pushEl){
+      pushEl.classList.add('ativo');
+      setTimeout(function(){ pushEl.classList.remove('ativo'); }, 5000);
+    }
+
+    setTimeout(mostrarPush, (Math.random() * 25000) + 15000);
+  }
+
+  // Primeira notificação após 8 segundos
+  setTimeout(mostrarPush, 8000);
+})();
+</script>
+
+<!-- POP-UP INSCRIÇÃO (30s) -->
+<div class="popup-overlay" id="popup-inscricao">
+  <div class="popup-card">
+    <button class="popup-fechar" id="popup-fechar" aria-label="Fechar">&times;</button>
+    <div class="popup-icone">🎓</div>
+    <div class="popup-titulo">Garanta sua bolsa no Bolsão 2027!</div>
+    <p class="popup-texto">
+      A partir do dia 28, inscreva-se e concorra a <strong>descontos de até 100%</strong> no Fundamental, Médio Técnico ou Pós-Médio Técnico da ETERJ.
+    </p>
+    <a href="#formulario" class="popup-btn" id="popup-cta">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      Quero me inscrever
+    </a>
+    <p class="popup-sub">Vagas limitadas. A inscrição leva menos de 1 minuto.</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var popup = document.getElementById('popup-inscricao');
+  var jaExibiu = false;
+
+  function abrirPopup(){
+    if (jaExibiu) return;
+    jaExibiu = true;
+    popup.classList.add('ativo');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function fecharPopup(){
+    popup.classList.remove('ativo');
+    document.body.style.overflow = '';
+  }
+
+  // Abrir após 30 segundos
+  setTimeout(abrirPopup, 30000);
+
+  // Fechar ao clicar no X
+  document.getElementById('popup-fechar').addEventListener('click', fecharPopup);
+
+  // Fechar ao clicar fora do card
+  popup.addEventListener('click', function(e){
+    if (e.target === popup) fecharPopup();
+  });
+
+  // Fechar ao clicar no CTA (e rolar até o form)
+  document.getElementById('popup-cta').addEventListener('click', function(){
+    fecharPopup();
+  });
+
+  // Fechar com ESC
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') fecharPopup();
+  });
 })();
 </script>
 
